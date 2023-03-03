@@ -1,0 +1,53 @@
+.aboutushome {
+    background-image: url("../assets/bg2.png");
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    margin-top: 50px;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: inset 0px 150px 120px -10px rgba(0, 0, 0, 1),
+        inset 0px -150px 120px -10px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: inset 0px 150px 120px -10px rgba(0, 0, 0, 1),
+        inset 0px -150px 120px -10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: inset 0px 150px 120px -10px rgba(0, 0, 0, 1),
+        inset 0px -150px 120px -10px rgba(0, 0, 0, 1);
+    height: 100vh;
+    .left,
+    .right {
+        width: 50%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .left {
+        h1 {
+            font-size: 40px;
+            color: #1daeff;
+        }
+        p {
+            font-size: 25px;
+        }
+    }
+    .right {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        .card {
+            h2 {
+                font-size: 32px;
+                color: #1daeff;
+            }
+            .title {
+                font-size: 28px;
+            }
+            span {
+                font-size: 21px;
+                color: #c4c4c4;
+            }
+        }
+    }
+}

@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import filter from "../assets/filter.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getListings } from "../services/homesSlice";
 import "../scss/PlaceListContainer.scss";
 import { Link } from "react-router-dom";
 import more from "../assets/more.svg";
+import Slider from "react-slick";
 
 const PlaceListContainer = () => {
     const dispatch = useDispatch();
     const { allHomes } = useSelector((state) => state.homes);
-    const [img, setImg] = useState(0);
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
     useEffect(() => {
         dispatch(getListings());
     }, []);
@@ -24,12 +31,21 @@ const PlaceListContainer = () => {
             </div>
             <div className="placelistcontainer-cards">
                 {allHomes.map((home) => (
-                    <div className="card">
+                    <div key={home.id} className="card">
                         <div className="card-img">
-                            <img
-                                id={`img-${home.id}`}
-                                src={home.images[img].src}
-                            />
+                            <Slider
+                                style={{ width: "750px", margin: "0 auto" }}
+                                {...settings}
+                            >
+                                {home.images.map((product) => (
+                                    <div key={product.id}>
+                                        <img
+                                            src={product.src}
+                                            alt={product.alt}
+                                        />
+                                    </div>
+                                ))}
+                            </Slider>
                         </div>
                         <div className="card-footer">
                             <div className="card-price">
@@ -50,11 +66,11 @@ const PlaceListContainer = () => {
                             </div>
                             <div className="card-info">
                                 <p>
-                                    <i class="fa-solid fa-bed"></i>{" "}
+                                    <i className="fa-solid fa-bed"></i>{" "}
                                     {home.bedroom} Bedrooms
                                 </p>
                                 <p>
-                                    <i class="fa-solid fa-bath"></i>{" "}
+                                    <i className="fa-solid fa-bath"></i>{" "}
                                     {home.bathroom} Bath
                                 </p>
                                 <p>{home.area} Sq ft</p>

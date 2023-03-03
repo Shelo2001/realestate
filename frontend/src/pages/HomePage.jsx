@@ -1,4 +1,5 @@
 import React from "react";
+import AboutUsHome from "../components/AboutUsHome";
 import Hero from "../components/Hero";
 import Map from "../components/Map";
 import Navbar from "../components/Navbar";
@@ -13,8 +14,8 @@ const HomePage = () => {
                 <Hero />
             </div>
             <PlaceListContainer />
-
             <Map />
+            <AboutUsHome />
         </div>
     );
 };
