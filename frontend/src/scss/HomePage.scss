@@ -1,0 +1,26 @@
+.homepage {
+    background-image: url("../assets/bg.png");
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0px 150px 120px -10px rgba(0, 0, 0, 1),
+        inset 0px -150px 120px -10px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: inset 0px 150px 120px -10px rgba(0, 0, 0, 1),
+        inset 0px -150px 120px -10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: inset 0px 150px 120px -10px rgba(0, 0, 0, 1),
+        inset 0px -150px 120px -10px rgba(0, 0, 0, 1);
+    height: 100vh;
+    .hero-text {
+        margin-top: 10%;
+        p {
+            margin-left: 20%;
+            font-size: 65px;
+            font-weight: bold;
+            color: white;
+            span {
+                color: #1daeff;
+            }
+        }
+    }
+}
