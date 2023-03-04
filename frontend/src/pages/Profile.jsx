@@ -1,10 +1,10 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import { getProfile, logout } from "../services/usersSlice";
 import "../scss/Profile.scss";
+import Modal from "react-modal";
+import { motion } from "framer-motion";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -21,7 +21,15 @@ const Profile = () => {
     const logoutHandler = () => {
         dispatch(logout());
     };
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
     return (
         <div className="profile-container">
             <Link to="/">
@@ -42,7 +50,7 @@ const Profile = () => {
                         <p>{profile.email}</p>
                     </div>
                     <div>
-                        <button className="button-primary">
+                        <button onClick={openModal} className="button-primary">
                             See full profile
                         </button>
                         <button
@@ -54,6 +62,9 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            <h1 style={{ textAlign: "center", color: "#1aaefd" }}>
+                Your Listings
+            </h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -77,6 +88,29 @@ const Profile = () => {
                         ))}
                 </tbody>
             </table>
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="Modal"
+                overlayClassName="Overlay"
+                ariaHideApp={false}
+            >
+                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+                    <img
+                        src={`${import.meta.env.VITE_BASE_URL}/upload/${
+                            profile.avatar
+                        }`}
+                    />
+                    <h2>{profile.name}</h2>
+                    <p>{profile.phone_number}</p>
+                    <p>{profile.email}</p>
+                    <p>{profile.phone_number}</p>
+                    <button onClick={closeModal}>Close Modal</button>
+                    <button>Delete Account</button>
+                    <button>Edit</button>
+                </motion.div>
+            </Modal>
         </div>
     );
 };

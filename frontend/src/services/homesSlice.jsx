@@ -76,6 +76,7 @@ export const homesSlice = createSlice({
         [getListings.fulfilled]: (state, { payload }) => {
             state.loading = false;
             state.message = null;
+            state.home = {};
             state.allHomes = payload;
             state.success = true;
         },
