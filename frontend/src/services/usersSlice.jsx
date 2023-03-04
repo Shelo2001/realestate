@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
     loading: false,
     user: {},
+    profile: {},
 };
 
 export const registerUser = createAsyncThunk(
@@ -31,6 +32,23 @@ export const login = createAsyncThunk("users/login", async (values) => {
         if (data?.token) {
             document.location.href = "/";
         }
+        return data;
+    } catch (error) {
+        return error;
+    }
+});
+
+export const getProfile = createAsyncThunk("users/getProfile", async () => {
+    try {
+        const token = JSON.parse(localStorage.getItem("token"));
+        const data = await axios.get(
+            `${import.meta.env.VITE_BASE_URL}/api/profile`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         return data;
     } catch (error) {
         return error;
@@ -91,6 +109,17 @@ export const usersSlice = createSlice({
             state.user = {};
         },
         [logout.rejected]: (state, { payload }) => {
+            state.loading = false;
+            state.error = payload;
+        },
+        [getProfile.pending]: (state) => {
+            state.loading = true;
+        },
+        [getProfile.fulfilled]: (state, { payload }) => {
+            state.loading = false;
+            state.profile = payload.data[0];
+        },
+        [getProfile.rejected]: (state, { payload }) => {
             state.loading = false;
             state.error = payload;
         },

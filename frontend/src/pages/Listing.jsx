@@ -18,6 +18,7 @@ const Listing = () => {
         home,
         similarListings,
         message: successMessage,
+        loading,
     } = useSelector((state) => state.homes);
     const { images } = home;
     useEffect(() => {
@@ -232,6 +233,8 @@ const Listing = () => {
                                 Email Sent Successfuly to{" "}
                                 <strong>{home.user.email}</strong>
                             </div>
+                        ) : loading ? (
+                            <div>Senting message...</div>
                         ) : (
                             <div className="formcontainer">
                                 <div>

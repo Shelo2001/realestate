@@ -21,7 +21,9 @@ Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/profile', function(Request $request) {
-        return auth()->user();
+        $user= auth()->user();
+        $listings =  auth()->user()->Home;
+        return response([$user]);
     });
     Route::get('/logout', [AuthenticationController::class, 'logout']);
     

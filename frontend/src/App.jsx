@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Listing from "./pages/Listing";
 import All from "./pages/All";
+import Profile from "./pages/Profile";
 
 function BackgroundImage() {
     return (
@@ -17,6 +18,7 @@ function BackgroundImage() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/home/all" element={<All />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/home/:id" element={<Listing />} />
             </Routes>
         </Router>

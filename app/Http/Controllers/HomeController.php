@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
 
     public function getHomeListing(){
-        $homes=Home::with('Images')->paginate(4);
+        $homes=Home::with('Images')->orderBy('created_at','desc')->paginate(4);
        
         return response()->json([
             "homes" => $homes
