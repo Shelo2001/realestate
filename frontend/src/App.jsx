@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import AboutUs from "./pages/AboutUs";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Listing from "./pages/Listing";
 
 function BackgroundImage() {
     return (
@@ -14,6 +15,7 @@ function BackgroundImage() {
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/home/:id" element={<Listing />} />
             </Routes>
         </Router>
     );

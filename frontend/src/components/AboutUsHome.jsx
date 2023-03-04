@@ -20,7 +20,7 @@ const AboutUsHome = () => {
                     <h2>500+</h2>
                     <p className="title">Projects</p>
                     <span classname="desc">
-                        Over 500 lexury villas for“Home Away From Home”
+                        Over 500 lexury villas for “Home Away From Home”
                         experience
                     </span>
                 </div>

@@ -1,0 +1,35 @@
+.signin-signup {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    .formcontainer {
+        background: #161616;
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        border-radius: 30px;
+        align-items: center;
+        position: relative;
+        min-height: 40vh;
+        gap: 20px;
+        div {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+        }
+        button {
+            bottom: 10px;
+            width: 70%;
+            margin-bottom: 10px;
+        }
+        .line {
+            width: 70%;
+        }
+        p {
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+}
