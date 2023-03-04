@@ -6,7 +6,7 @@ const Map = () => {
     return (
         <div className="mapcontainer">
             <h1>Neighborhood</h1>
-            <p>Deam home villas Chavchavadze str., Tbilisi, Georgia</p>
+            <p>Dream home villas Chavchavadze str., Tbilisi, Georgia</p>
             <div style={{ width: "60%", height: "80vh", margin: "0 auto" }}>
                 <MapContainer
                     style={{ height: "100%", width: "100%" }}

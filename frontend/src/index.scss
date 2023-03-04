@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
 body {
     margin: 0;
-    font-family: "Hind", sans-serif;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
     background: #000000;
 }
 ::-webkit-scrollbar {
@@ -66,6 +64,18 @@ input[type="email"] {
     border: none;
     border-radius: 10px;
     color: white;
+}
+textarea {
+    padding: 10px;
+    background: #1d1d1d;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    height: 100px;
+    resize: none;
+}
+textarea::placeholder {
+    font-size: 20px;
 }
 input[type="text"],
 input[type="password"],

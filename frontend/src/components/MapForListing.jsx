@@ -2,11 +2,14 @@ import React from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "../scss/Map.scss";
 
-const MapForListing = () => {
+const MapForListing = ({ address }) => {
     return (
         <div className="mapcontainer-listing">
             <h1>Neighborhood</h1>
-            <p>Deam home villas Chavchavadze str., Tbilisi, Georgia</p>
+            <p>
+                Dream home villas {address.street}, {address.city},{" "}
+                {address.country}
+            </p>
             <div style={{ width: "100%", height: "60vh", margin: "0 auto" }}>
                 <MapContainer
                     style={{ height: "100%", width: "100%" }}
@@ -20,7 +23,9 @@ const MapForListing = () => {
                     />
 
                     <Marker position={{ lat: 41.70895, lng: 44.76401 }}>
-                        <Popup>Paliashvili str., Tbilisi, Georgia</Popup>
+                        <Popup>
+                            {address.street}, {address.city}, {address.country}
+                        </Popup>
                     </Marker>
                 </MapContainer>
             </div>

@@ -60,4 +60,12 @@ class HomeController extends Controller
             "home" => $home
         ]);
     }
+
+    public function getSimilarListing($city,$id){
+        $similarHomes=Home::where('city',$city)->whereNotIn('id',[$id])->with('Images')->orderBy('created_at','desc')->limit(2)->get();
+        return response()->json([
+            "similarHomes" => $similarHomes
+        ]);
+    }
+
 }

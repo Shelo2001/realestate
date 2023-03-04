@@ -1,5 +1,6 @@
 import React from "react";
 import "../scss/AboutUsHome.scss";
+import { Link } from "react-router-dom";
 
 const AboutUsHome = () => {
     return (
@@ -13,7 +14,9 @@ const AboutUsHome = () => {
                     around is a breeze, with easy access to freeways, buses and
                     trolleys. . Laundry is available on premises.
                 </p>
-                <button className="button-primary">Read More</button>
+                <Link to="/aboutus">
+                    <button className="button-primary">Read More</button>
+                </Link>
             </div>
             <div className="right">
                 <div className="card">
