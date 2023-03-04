@@ -28,3 +28,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::post('/home/createlisting', [HomeController::class,"createHomeListing"]);
 Route::get('/home/listings', [HomeController::class,"getHomeListing"]);
+Route::get('/home/listing/{id}', [HomeController::class,"getSingleListing"]);

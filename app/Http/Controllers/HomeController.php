@@ -27,7 +27,7 @@ class HomeController extends Controller
             'hasBikePath'=>'required',
             'hasCentralCooling'=>'required',
             'hasSwimmingPool'=>'required',
-            'owner_user_id'=>'required'
+            'user_id'=>'required'
         ]);
     
         // Create a new Product model and fill it with the form data
@@ -51,6 +51,13 @@ class HomeController extends Controller
        
         return response()->json([
             "homes" => $homes
+        ]);
+    }
+
+    public function getSingleListing($id){
+        $home=Home::where('id',$id)->with('User')->with('Images')->first();
+        return response()->json([
+            "home" => $home
         ]);
     }
 }

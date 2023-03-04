@@ -1,0 +1,101 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-top: 50px;
+    margin-left: 10%;
+    .slider {
+        display: flex;
+        flex-direction: column;
+        .active-image {
+            position: relative;
+            width: 700px;
+            height: 400px;
+            margin-bottom: 50px;
+            img {
+                width: 100%;
+                border-radius: 20px;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        .active-image .thumbnail-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .thumbnail-images {
+            img {
+                width: 150px;
+                height: 130px;
+                object-fit: cover;
+                margin: 0 10px;
+                border: 2px solid #fff;
+                border-radius: 2%;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            }
+            img:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            img.active {
+                border-color: #1aaefd;
+            }
+        }
+        .left-btn,
+        .right-btn {
+            position: absolute;
+            font-size: 24px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .left-btn:disabled {
+            color: rgb(62, 62, 62);
+        }
+        .right-btn:disabled {
+            color: rgb(62, 62, 62);
+        }
+        .left-btn {
+            top: 36%;
+            left: 120px;
+        }
+        .right-btn {
+            top: 36%;
+            left: 48%;
+        }
+    }
+    .home-features {
+        display: flex;
+        width: 92%;
+        border: 1px solid #fffbfb;
+        color: #fffbfb;
+        font-weight: 600;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+        margin-top: 30px;
+        border-radius: 20px;
+        p {
+            padding: 10px;
+        }
+    }
+    .home-description {
+        h1 {
+            color: #1aaefd;
+        }
+        p {
+            color: #d4d4d4;
+        }
+    }
+    .home-detailed-features {
+        color: white;
+        .fa-check {
+            color: #1aaefd;
+        }
+        .fa-x {
+            color: red;
+        }
+    }
+}

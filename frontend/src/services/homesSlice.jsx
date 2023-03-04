@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
     loading: false,
     allHomes: [],
+    home: {},
 };
 
 export const getListings = createAsyncThunk("orders/getListings", async () => {
@@ -16,6 +17,20 @@ export const getListings = createAsyncThunk("orders/getListings", async () => {
         console.log(error);
     }
 });
+
+export const getSingleListing = createAsyncThunk(
+    "orders/getSingleListing",
+    async (id) => {
+        try {
+            const { data } = await axios.get(
+                `${import.meta.env.VITE_BASE_URL}/api/home/listing/${id}`
+            );
+            return data.home;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+);
 
 export const homesSlice = createSlice({
     name: "homes",
@@ -31,6 +46,17 @@ export const homesSlice = createSlice({
             state.success = true;
         },
         [getListings.rejected]: (state) => {
+            state.loading = false;
+        },
+        [getSingleListing.pending]: (state) => {
+            state.loading = true;
+        },
+        [getSingleListing.fulfilled]: (state, { payload }) => {
+            state.loading = false;
+            state.home = payload;
+            state.success = true;
+        },
+        [getSingleListing.rejected]: (state) => {
             state.loading = false;
         },
     },

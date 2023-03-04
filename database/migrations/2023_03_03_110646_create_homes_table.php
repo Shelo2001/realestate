@@ -29,7 +29,8 @@ return new class extends Migration
             $table->boolean('hasBikePath')->default(false);
             $table->boolean('hasCentralCooling')->default(false);
             $table->boolean('hasSwimmingPool')->default(false);
-            $table->integer('owner_user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
