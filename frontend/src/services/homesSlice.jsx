@@ -65,6 +65,22 @@ export const sendMessage = createAsyncThunk(
     }
 );
 
+export const createListing = createAsyncThunk(
+    "orders/createListing",
+    async (listingData) => {
+        try {
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_BASE_URL}/api/home/createlisting`,
+                listingData
+            );
+            document.location.href = "/";
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+);
+
 export const homesSlice = createSlice({
     name: "homes",
     initialState,
@@ -115,6 +131,15 @@ export const homesSlice = createSlice({
             state.success = true;
         },
         [sendMessage.rejected]: (state) => {
+            state.loading = false;
+        },
+        [createListing.pending]: (state) => {
+            state.loading = true;
+        },
+        [createListing.fulfilled]: (state, { payload }) => {
+            state.loading = false;
+        },
+        [createListing.rejected]: (state) => {
             state.loading = false;
         },
     },

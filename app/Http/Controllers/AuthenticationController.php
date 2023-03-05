@@ -62,4 +62,27 @@ class AuthenticationController extends Controller
 
         return response(["message"=>"Successfully logged out"],200);
     }
+
+    public function update(Request $request, User $user){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+        ]);
+
+        $user->update([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'phone_number' => $validatedData['phone_number'],
+        ]);
+
+        return response()->json(['message' => 'User updated successfully']);
+
+    }
+
+    public function deactivateUser(Request $request,User $user){
+        auth()->user()->currentAccessToken()->delete();
+        $user->delete();
+        return response(["message"=>"User deactivated successfully"]);
+    }
 }

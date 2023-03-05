@@ -234,7 +234,7 @@ const Listing = () => {
                                 <strong>{home.user.email}</strong>
                             </div>
                         ) : loading ? (
-                            <div>Senting message...</div>
+                            <div>Sending message...</div>
                         ) : (
                             <div className="formcontainer">
                                 <div>

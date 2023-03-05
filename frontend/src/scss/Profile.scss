@@ -75,7 +75,40 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     z-index: 9999;
     background: #373737;
+    position: relative;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    color: white;
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h1 {
+            margin: 0 auto;
+            color: #1daeff;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            bottom: 30px;
+            position: absolute;
+            justify-content: space-between;
+            width: 94%;
+        }
+        .close {
+            position: absolute;
+            right: 5px;
+            top: 20px;
+            color: white;
+            background-color: transparent;
+            cursor: pointer;
+            border: none;
+        }
+    }
 }
 
 .Overlay {

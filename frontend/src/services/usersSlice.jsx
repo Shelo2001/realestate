@@ -55,6 +55,51 @@ export const getProfile = createAsyncThunk("users/getProfile", async () => {
     }
 });
 
+export const updateProfile = createAsyncThunk(
+    "users/updateProfile",
+    async (userData) => {
+        try {
+            const token = JSON.parse(localStorage.getItem("token"));
+            const data = await axios.put(
+                `${import.meta.env.VITE_BASE_URL}/api/update/${userData.id}`,
+                userData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            document.location.reload();
+            return data;
+        } catch (error) {
+            return error;
+        }
+    }
+);
+
+export const deleteProfile = createAsyncThunk(
+    "users/deleteProfile",
+    async (id) => {
+        try {
+            const token = JSON.parse(localStorage.getItem("token"));
+            const data = await axios.delete(
+                `${import.meta.env.VITE_BASE_URL}/api/delete/${id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            localStorage.removeItem("user", JSON.stringify(data?.user));
+            localStorage.removeItem("token", JSON.stringify(data?.token));
+            document.location.href = "/signin";
+            return data;
+        } catch (error) {
+            return error;
+        }
+    }
+);
+
 export const logout = createAsyncThunk("users/logout", async () => {
     try {
         const token = JSON.parse(localStorage.getItem("token"));
@@ -120,6 +165,27 @@ export const usersSlice = createSlice({
             state.profile = payload.data[0];
         },
         [getProfile.rejected]: (state, { payload }) => {
+            state.loading = false;
+            state.error = payload;
+        },
+        [updateProfile.pending]: (state) => {
+            state.loading = true;
+        },
+        [updateProfile.fulfilled]: (state, { payload }) => {
+            state.loading = false;
+            state.profile = payload.data[0];
+        },
+        [updateProfile.rejected]: (state, { payload }) => {
+            state.loading = false;
+            state.error = payload;
+        },
+        [deleteProfile.pending]: (state) => {
+            state.loading = true;
+        },
+        [deleteProfile.fulfilled]: (state, { payload }) => {
+            state.loading = false;
+        },
+        [deleteProfile.rejected]: (state, { payload }) => {
             state.loading = false;
             state.error = payload;
         },

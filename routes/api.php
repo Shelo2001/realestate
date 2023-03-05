@@ -26,8 +26,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return response([$user]);
     });
     Route::get('/logout', [AuthenticationController::class, 'logout']);
-    
-
+    Route::put('/update/{user}', [AuthenticationController::class, 'update']);
+    Route::delete('/delete/{user}', [AuthenticationController::class, 'deactivateUser']);
 });
 
 Route::post('/home/createlisting', [HomeController::class,"createHomeListing"]);
